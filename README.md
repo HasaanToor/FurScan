@@ -17,4 +17,4 @@ At the core of our capstone project lies a profound "why" - a mission to enhance
 Our innovation strives to bridge this gap by using artificial intelligence and computer vision. By analyzing photos of animals, our app can quickly and accurately identify health problems, from common ailments like pink eye to more subtle issues that might escape the human eye. This technology not only gives pet owners critical information but also serves as a preventative measure, enabling early intervention when necessary. Ultimately, our project seeks to strengthen the human-animal bond and ensure the best possible care for our furry companions.
 
 ## Vlogs
-* [Vlog 1]()
+* [Vlog 1](https://www.youtube.com/watch?v=oTGdbxi8asQ)
