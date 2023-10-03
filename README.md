@@ -1,6 +1,4 @@
-# Capstone Project
-
-## (Team Name is to be determined)
+# FurScan
 
 ## Members
 * Hasaan Toor
