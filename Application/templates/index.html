@@ -8,9 +8,28 @@
   <title>FurScan</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    /* Additional Styles */
+    @font-face {
+  font-family: 'Charmonman';
+  src: url('{% static 'fonts/Charmonman-Regular.woff' %}') format('woff'); 
+  font-weight: normal;
+  font-style: normal;
+  }
     .header {
       text-align: center;
+      background-color: #6082B6; 
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between; 
+      align-items: center;
+    }
+    .logo {
+      width: 50px; 
+      height: auto; 
+    }
+    h1 {
+      font-family: 'Charmonman'; 
+      font-size: 50px;
+      
     }
     .custom-file-upload {
       display: block;
@@ -37,7 +56,9 @@
 </head>
 <body>
   <div class="header">
+    <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo"> 
     <h1>FurScan</h1>
+    <img src="{% static 'images/account.png' %}" alt="Account" class="logo">
   </div>
 
   <form method="POST" enctype="multipart/form-data" class="text-center">
