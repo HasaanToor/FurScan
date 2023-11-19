@@ -16,6 +16,7 @@ class CustomFileSystemStorage(FileSystemStorage):
 def index(request):
     message = ""
     prediction = ""
+    result_text =""
     fss = CustomFileSystemStorage()
     try:
         image = request.FILES["image"]
@@ -48,7 +49,11 @@ def index(request):
                 print(f"Image {i+1}: The eye is infected with a probability of {probability:.2f}.")
             else:
                 print(f"Image {i+1}: The eye is not infected with a probability of {1 - probability:.2f}.")
-
+        
+        if predictions[0][0] >= threshold:
+            result_text = "The eye is infected."
+        else:
+            result_text = "The eye is not infected."
         return TemplateResponse(
             request, 
             "index.html",
@@ -56,7 +61,7 @@ def index(request):
                 "message": message, 
                 "image": image, 
                 "image_url": image_url,
-                "prediction": prediction,
+                "prediction": result_text,
             },
         )
     except MultiValueDictKeyError:
