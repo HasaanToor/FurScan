@@ -3,7 +3,7 @@
 ## Members
 * Hasaan Toor
 * Aryan Chandra
-* Keshiro Mubarak
+* Mubarak Abiola Keshiro
 
 ## Mentor
 * Christine Chan - Ph.D., P.Eng.
