@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+
 import os
 from pathlib import Path
 
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hqpppnpepn64x@*qwo@utw!72jy)r)qlpr6%aox08c@y95e$80'
+SECRET_KEY = 'django-insecure-oe9!^5%r*mis@8s))wz0(y^qq#^re+#hgmdxx*0m4g9q_ytyfp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -116,9 +117,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = "/medias/"
 
-STATICFILES_DIRS = [
-    BASE_DIR / "assets",
+STATISFILES_DIRS = [
+    BASE_DIR / "assets"
 ]
 
 MEDIA_ROOT = BASE_DIR / "media"

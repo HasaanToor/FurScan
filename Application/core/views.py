@@ -1,46 +1,67 @@
-from django.shortcuts import render
-from .forms import UploadImageForm
+import os
 import cv2
 import numpy as np
-import tensorflow as tf
 from keras.models import load_model
 
-def predict_eye_infection(request):
-    if request.method == 'POST':
-        form = UploadImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            # Load the trained model
-            model = load_model('models/model.h5')
+from django.conf import settings
+from django.template.response import TemplateResponse
+from django.utils.datastructures import MultiValueDictKeyError
+from django.core.files.storage import FileSystemStorage
 
-            # Set the image dimensions
-            img_width, img_height = 100, 100
+class CustomFileSystemStorage(FileSystemStorage):
+    def get_available_name(self, name, max_length = None):
+        self.delete(name)
+        return name
+    
+def index(request):
+    message = ""
+    prediction = ""
+    fss = CustomFileSystemStorage()
+    try:
+        image = request.FILES["image"]
+        print("Name", image.file)
+        _image = fss.save(image.name, image)
+        path = str(settings.MEDIA_ROOT) + "/" + image.name
+        image_url = fss.url(_image)
 
-            new_images = []
-            uploaded_image = request.FILES['image']
-            image = cv2.imdecode(np.frombuffer(uploaded_image.read(), np.uint8), cv2.IMREAD_COLOR)
-            image = cv2.resize(image, (img_width, img_height))
-            new_images.append(image)
+        # Set the image dimensions
+        img_width, img_height = 100, 100
 
-            new_images = np.array(new_images)
-            new_images = new_images.astype('float32') / 255.0
-            predictions = model.predict(new_images)
+        new_images = []
+        img = cv2.imread(path)
+        img = cv2.resize(img, (img_width, img_height))
+        new_images.append(img)
 
-            # Set the threshold probability
-            threshold = 0.5  
+        # Load the trained model
+        model = load_model('models/model.h5')
 
-            result_messages = []
+        new_images = np.array(new_images)
+        new_images = new_images.astype('float32') / 255.0
+        predictions = model.predict(new_images)
 
-            for i, prediction in enumerate(predictions):
-                probability = prediction[0]
-                if probability >= threshold:
-                    result_messages.append(f"Image {i+1}: The eye is infected with a probability of {probability:.2f}.")
-                else:
-                    result_messages.append(f"Image {i+1}: The eye is not infected with a probability of {1 - probability:.2f}.")
+        # Set the threshold probability
+        threshold = 0.5  
 
-            # You can pass the result_messages to your template or render it in the response
-            context = {'form': form, 'result_messages': result_messages}
-            return render(request, 'index.html', context)
-    else:
-        form = UploadImageForm()
+        for i, prediction in enumerate(predictions):
+            probability = prediction[0]
+            if probability >= threshold:
+                print(f"Image {i+1}: The eye is infected with a probability of {probability:.2f}.")
+            else:
+                print(f"Image {i+1}: The eye is not infected with a probability of {1 - probability:.2f}.")
 
-    return render(request, 'index.html', {'form': form})
+        return TemplateResponse(
+            request, 
+            "index.html",
+            {
+                "message": message, 
+                "image": image, 
+                "image_url": image_url,
+                "prediction": prediction,
+            },
+        )
+    except MultiValueDictKeyError:
+        return TemplateResponse(
+            request, 
+            "index.html",
+            {"message": "No image selected"},
+        )

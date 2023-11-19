@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CNN Image Prediction Tool</title>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>FurScan</h1>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input
+        class="custom-file-upload"
+        type="file"
+        accept="image"
+        name="image"
+        id="file"
+      />
+      <button class="compress_image" type="submit" id="submitBtn">
+        Predict
+      </button>
+      <div class="status">
+        <p id="message">{{ message }}</p>
+      </div>
+    </form>
+
+    <div class="wrapper">
+      <img
+        src="{% if image_url %}{{ image_url }}{% else %}{% static 'images/default.png' %}{% endif %}"
+        alt="Compressed Image"
+        width="400px"
+      />
+
+      <div class="info_container">
+        <ul>
+          <li>Prediction: <span class="type">{{ prediction }}</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="header">
+    </div>
+  </body>
+</html>
