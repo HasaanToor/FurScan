@@ -34,7 +34,7 @@ def index(request):
         new_images.append(img)
 
         # Load the trained model
-        model = load_model('models/model.h5')
+        model = load_model('models/model_with_augmentation_combined.h5')
 
         new_images = np.array(new_images)
         new_images = new_images.astype('float32') / 255.0
