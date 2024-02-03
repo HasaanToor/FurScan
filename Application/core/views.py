@@ -9,15 +9,17 @@ from django.utils.datastructures import MultiValueDictKeyError
 from django.core.files.storage import FileSystemStorage
 
 class CustomFileSystemStorage(FileSystemStorage):
-    def get_available_name(self, name, max_length = None):
+    def get_available_name(self, name, max_length=None):
         self.delete(name)
         return name
-    
+
 def index(request):
     message = ""
     prediction = ""
-    result_text =""
+    result_text = ""
+    accuracy = 0.0  # Initialize accuracy to zero
     fss = CustomFileSystemStorage()
+    
     try:
         image = request.FILES["image"]
         print("Name", image.file)
@@ -46,27 +48,27 @@ def index(request):
         for i, prediction in enumerate(predictions):
             probability = prediction[0]
             if probability >= threshold:
-                print(f"Image {i+1}: The eye is infected with a probability of {probability:.2f}.")
+                print(f"Image {i + 1}: The eye is infected with a probability of {probability:.2f}.")
             else:
-                print(f"Image {i+1}: The eye is not infected with a probability of {1 - probability:.2f}.")
-        
-        if predictions[0][0] >= threshold:
-            result_text = "The eye is infected."
-        else:
-            result_text = "The eye is not infected."
+                print(f"Image {i + 1}: The eye is not infected with a probability of {1 - probability:.2f}.")
+
+        accuracy = predictions[0][0]
+        result_text = "The eye is infected." if accuracy >= threshold else "The eye is not infected."
+
         return TemplateResponse(
-            request, 
+            request,
             "index.html",
             {
-                "message": message, 
-                "image": image, 
+                "message": message,
+                "image": image,
                 "image_url": image_url,
                 "prediction": result_text,
+                "accuracy": f"{accuracy:.2%}",
             },
         )
     except MultiValueDictKeyError:
         return TemplateResponse(
-            request, 
+            request,
             "index.html",
             {"message": "No image selected"},
         )
