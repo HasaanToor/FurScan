@@ -1,0 +1,143 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick a pet</title>
+    <style>
+        @font-face {
+            font-family: 'Charmonman';
+            src: url('{% static 'fonts/Charmonman-Bold.woff' %}') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #6082B6;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .logo {
+            margin: 0;
+            padding: 0;
+            height: 35px;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #6082B6;
+            padding: 2px 0;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            position: relative;
+        }
+
+        .small-dog {
+            position: absolute;
+            top: 50%;
+            left: 50%; 
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: auto;
+            z-index: 1; 
+        }
+
+        .top {
+            padding-top: 0pt;
+            font-size: 3vw;
+            font-family: 'Charmonman';
+        }
+
+        .animals {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .animal-box {
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px;
+            width: 80%; 
+            max-width: 400px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .animal-box:hover {
+            background-color: #ddd; 
+        }
+
+        .animal-image {
+            max-width: 100%;
+            max-height: 100%, 250px;
+            width: auto;
+            border-radius: 10px;
+            flex-grow: 1; 
+        }
+
+        .animal-text {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .agree-button {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 768px) {
+      
+            .animals {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+
+            .animal-box {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="{% static '/images/logo.png' %}" alt="Logo" class="logo" onclick="location.href='{% url 'index' %}'">
+        <img src="{% static 'images/dog.png' %}" alt="Small Dog" class="small-dog">
+    </div>
+    <div class="top">
+        <p>Pick a pet below that you would like us to help diagnose😊</p>
+    </div>
+    <div class="animals">
+        <div class="dog animal-box" onclick="location.href='{% url 'Dogs' %}'">
+            <img src="{% static 'images/dogpage.png' %}" alt="Dog" class="animal-image">
+            <p class="animal-text">Dogs</p>
+        </div>
+
+        <div class="cat animal-box" onclick="location.href='{% url 'Cats' %}'">
+            <img src="{% static 'images/catpage.png' %}" alt="Cat" class="animal-image">
+            <p class="animal-text">Cats</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

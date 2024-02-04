@@ -7,7 +7,7 @@ from django.conf import settings
 from django.template.response import TemplateResponse
 from django.utils.datastructures import MultiValueDictKeyError
 from django.core.files.storage import FileSystemStorage
-
+from django.shortcuts import render 
 class CustomFileSystemStorage(FileSystemStorage):
     def get_available_name(self, name, max_length=None):
         self.delete(name)
@@ -72,3 +72,13 @@ def index(request):
             "index.html",
             {"message": "No image selected"},
         )
+def animals(request):
+    return render(request, 'animals.html')
+
+def cat_conjunct(request):
+    return render(request, 'CatConjuct.html')
+def Cats(request):
+    return render(request, 'Cats.html')
+
+def Dogs(request):
+    return render(request, 'Dogs.html')

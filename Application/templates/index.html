@@ -1,106 +1,146 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FurScan</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    @font-face {
-      font-family: 'Charmonman';
-      src: url('{% static 'fonts/Charmonman-Bold.woff' %}') format('woff'); 
-      font-weight: normal;
-      font-style: normal;
-    }
-    .header {
-      text-align: center;
-      background-color: #6082B6; 
-      padding: 20px 0;
-      display: flex;
-      justify-content: space-between; 
-      align-items: center;
-    }
-    .logo {
-      width: 50px; 
-      height: auto; 
-    }
-    h1 {
-      font-family: 'Charmonman'; 
-      font-size: 50px;
-    }
-    .custom-file-upload,
-    .compress_image {
-      margin: 20px auto;
-    }
-    .status {
-      text-align: center;
-    }
-    .disclaimer {
-      margin: 20px 0;
-      padding: 15px;
-      background-color: #f8d7da; /* Bootstrap's alert-danger background color */
-      border: 1px solid #f5c6cb; /* Bootstrap's alert-danger border color */
-      border-radius: 5px;
-      color: #721c24; /* Bootstrap's alert-danger text color */
-    }
-    .wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      margin-top: 40px;
-    }
-    .wrapper img {
-      max-height: 557px; /* Restrict the height of images */
-    }
-    .info_container {
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furscan</title>
+    <style>
+        @font-face {
+            font-family: 'Charmonman';
+            src: url('{% static 'fonts/Charmonman-Bold.woff' %}') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #6082B6;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .logo {
+            margin: 0;
+            padding: 0;
+            height: 35px; 
+        }
+
+        .welcome-section {
+            padding: 10px;
+            font-family: 'Charmonman';
+            color: black;
+            display: flex;
+            flex-direction: row; 
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Charmonman';
+    
+            color: black;
+        }
+
+        .disclaimer-section {
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px;
+        }
+
+        .agree-button {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .header {
+            text-align: left; 
+            background-color: #6082B6;
+            padding: 2px 0;
+            display: flex;
+            justify-content: left; 
+            align-items: center;
+            position: relative; 
+        }
+
+        .small-dog {
+            position: absolute;
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            width: 30px; 
+            height: auto;
+        }
+
+        .fade-image {
+            opacity: 1;
+            transition: opacity 10s ease-out;
+            max-width: 30%;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+        .top{
+            padding-top: 0pt;
+            font-size:3vw;
+            font-family: 'Charmonman';
+        }
+
+        @media (min-width: 768px) {
+            
+            .welcome-section {
+                flex-direction: row; 
+            }
+
+            .fade-image {
+                width: 30%;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container-fluid">
     <div class="header">
-      <img src="{% static '/images/logo.png' %}" alt="Logo" class="logo"> 
-      <h1>FurScan</h1>
-      <img src="{% static 'images/account.png' %}" alt="Account" class="logo">
+        <img src="{% static '/images/logo.png' %}" alt="Logo" class="logo">
+        <img src="{% static 'images/dog.png' %}" alt="Small Dog" class="small-dog">
+        <h1>FurScan</h1>
+    </div>
+    <div class="top">
+        <p>Welcome to Furscan</p>
+    </div>
+    <div class="welcome-section">
+        <img src="{% static 'images/catdog.png' %}" alt="CatDog" class="fade-image" id="catDogImage">
+
+        <p>Detect diseases faster and know how to help your pets</p>
+        <img src="{% static 'images/dogcat.png' %}" alt="DogCat" class="fade-image" id="dogCatImage">
     </div>
 
-    <div class="disclaimer">
-      <p>This application is provided for educational and informational purposes only. The predictions made by FurScan are not guaranteed to be accurate, and the developers do not take any responsibility for the results. Users are advised to use their discretion.</p>
+    <div class="disclaimer-section">
+        <p>This application is not a licensed doctor, and users should use it at their own risk. For a full diagnosis,
+            consult a licensed doctor. We are not liable for any mistakes that may happen as a result of this
+            application. Artificial intelligence used in this application is for educational aid only.</p>
+        <button class="agree-button" onclick="location.href='{% url 'animals' %}'">OK, I agree</button>
     </div>
 
-    <form method="POST" enctype="multipart/form-data" class="text-center">
-      {% csrf_token %}
-      <div class="row">
-        <div class="col-md-6">
-          <input type="file" accept="image" name="image" id="file" class="form-control custom-file-upload" />
-        </div>
-        <div class="col-md-6">
-          <button class="btn btn-primary compress_image" type="submit" id="submitBtn">Predict</button>
-        </div>
-      </div>
-      <div class="status">
-        <p id="message">{{ message }}</p>
-      </div>
-    </form>
-
-    <div class="wrapper">
-      <img src="{% if image_url %}{{ image_url }}{% else %}{% static 'images/default.png' %}{% endif %}" alt="Compressed Image" class="img-fluid" />
-
-      <div class="info_container">
-        <ul class="list-unstyled">
-          <li>Prediction: <span class="type">{{ prediction }}</span></li>
-          <li>Accuracy: <span class="type">{{ accuracy }}</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        
+        setTimeout(function () {
+            document.getElementById('catDogImage').classList.add('fade-out');
+            document.getElementById('dogCatImage').classList.add('fade-out');
+        }, 10000);
+    </script>
 </body>
+
 </html>
