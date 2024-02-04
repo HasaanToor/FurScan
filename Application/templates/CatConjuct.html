@@ -28,8 +28,7 @@ body {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  width: 100vw; /* Set width to 100% of viewport width */
-}
+  width: 100vw; 
 
 .small-dog {
   position: absolute;
@@ -76,6 +75,10 @@ h1 {
 .info_container {
   margin-top: 20px;
 }
+.top {
+        font-size: 25px;
+        font-family: 'Charmonman';
+    }
 
   </style>
 </head>
@@ -85,9 +88,11 @@ h1 {
       <img src="{% static '/images/logo.png' %}" alt="Logo" class="logo" onclick="location.href='{% url 'index' %}'"> 
       <img src="{% static 'images/dog.png' %}" alt="Small Dog" class="small-dog">
     </div>
-
-
-
+<p class="top">Take a questionaire to help diagnose the pet </p>
+<div data-tf-widget="LpdSSGeX" data-tf-opacity="100"
+ data-tf-iframe-props="title=Conjuctivitis" data-tf-transitive-search-params data-tf-medium="snippet" 
+ style="width:100%;height:500px;"></div><script src="//embed.typeform.com/next/embed.js"></script>
+ <p class="top">Or diagnose the pet by uploading images, powered by Artificial Intelligence</p>
     <form method="POST" enctype="multipart/form-data" class="text-center">
       {% csrf_token %}
       <div class="row">

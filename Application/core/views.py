@@ -82,3 +82,5 @@ def Cats(request):
 
 def Dogs(request):
     return render(request, 'Dogs.html')
+def Kennel(request):
+    return render(request, 'Kennel.html')

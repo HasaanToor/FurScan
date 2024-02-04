@@ -41,34 +41,12 @@
             height: 35px;
         }
 
-        .disease-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        
 
-        .disease-item {
-            background-color: white;
-            color: black;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 10px;
-            cursor: pointer;
-            width: 80%;
-            max-width: 400px;
-        }
 
-        .disease-item:hover {
-            background-color: #ddd; 
-        }
 
         @media (min-width: 768px) {
-            .disease-list {
-                flex-direction: column;
-            }
+
         }
     </style>
 </head>
@@ -78,15 +56,9 @@
         <img src="{% static '/images/logo.png' %}" alt="Logo" class="logo" onclick="location.href='{% url 'index' %}'">
         <img src="{% static 'images/dog.png' %}" alt="Small Dog" class="small-dog">
     </div>
-    <div class="disease-list">
-        <div class="disease-item" onclick="location.href='Kennel'">
-            Kennel Cough
-        </div>
-        <div class="disease-item" onclick="location.href='#'">
-            Ear Infections
-        </div>
-     
-    </div>
+    <div data-tf-widget="IDpMiVqO" data-tf-opacity="100" data-tf-iframe-props="title=Dog Coughing Symptoms" 
+    data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:500px;"></div>
+    <script src="//embed.typeform.com/next/embed.js"></script>
 </body>
 
 </html>
