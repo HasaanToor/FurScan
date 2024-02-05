@@ -57,7 +57,7 @@ def index(request):
 
         return TemplateResponse(
             request,
-            "index.html",
+            "CatConjuct.html",
             {
                 "message": message,
                 "image": image,
