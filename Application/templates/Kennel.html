@@ -7,32 +7,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat Diseases</title>
     <style>
+        .footer {
+            background-color: #6082B6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 1px;
+            position:fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure the footer is above other content */
+        }
+
+        .footer-icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+    .footer-text {
+        color: white;
+        font-size: 12px;
+        max-width: 62px; 
+        white-space: nowrap;
+        
+    }
+
         body {
             margin: 0;
             padding: 0;
-            background-color: #6082B6;
-            color: white;
+            background-color: white;
+            color: black;
             font-family: Arial, sans-serif;
             text-align: center;
         }
 
         .header {
             text-align: center;
-            background-color: #6082B6;
-            padding: 2px 0;
+            background-color: white;
+            padding: 20px 0;
             display: flex;
-            justify-content: left;
-            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 25px;
+            justify-content: center;
+            align-items: center ;
+
             position: relative;
-        }
-        .small-dog {
-            position: absolute;
-            top: 50%;
-            left: 50%; 
-            transform: translate(-50%, -50%);
-            width: 30px;
-            height: auto;
-            z-index: 1; 
         }
 
         .logo {
@@ -40,25 +59,38 @@
             padding: 0;
             height: 35px;
         }
-
-        
-
-
-
         @media (min-width: 768px) {
-
+            .footer-text {
+        max-width: 100px; /* Adjust width for larger screens */
+    }
         }
     </style>
 </head>
 
 <body>
     <div class="header">
-        <img src="{% static '/images/logo.png' %}" alt="Logo" class="logo" onclick="location.href='{% url 'index' %}'">
-        <img src="{% static 'images/dog.png' %}" alt="Small Dog" class="small-dog">
+        <P> Please complete the form to diagnose for kennel cough and potential pneumonia</P>
     </div>
     <div data-tf-widget="IDpMiVqO" data-tf-opacity="100" data-tf-iframe-props="title=Dog Coughing Symptoms" 
     data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:500px;"></div>
     <script src="//embed.typeform.com/next/embed.js"></script>
+    <div style="align-items: center, font-family:times;">
+        All information gotten from <a href="https://veterinarypartner.vin.com/default.aspx?pid=19239&id=4951478">Veterinary Partner</a> Look there for more information
+    </div>
+    <div class="footer">
+        <div>
+            <img src="{% static '/images/home.png' %}" alt="Home" class="footer-icon" onclick="location.href='{% url 'animals' %}'">
+            <p class="footer-text">Pick a pet</p>
+        </div>
+        <div>
+            <img src="{% static '/images/account.png' %}" alt="Account" class="footer-icon">
+            <p class="footer-text">Account</p>
+        </div>
+        <div>
+            <img src="{% static '/images/resources.png' %}" alt="Resources" class="footer-icon">
+            <p class="footer-text">Learn more</p>
+        </div>
+    </div>
 </body>
 
 </html>

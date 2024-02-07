@@ -1,91 +1,61 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furscan</title>
+    <title>Welcome to Furscan</title>
     <style>
-        @font-face {
-            font-family: 'Charmonman';
-            src: url('{% static 'fonts/Charmonman-Bold.woff' %}') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
+
 
         body {
             margin: 0;
             padding: 0;
-            background-color: #6082B6;
-            color: white;
+            background-color: white;
+            color: black;
             font-family: Arial, sans-serif;
             text-align: center;
         }
 
         .logo {
+            opacity: 1;
+            transition: opacity 2s ease-out;
             margin: 0;
             padding: 0;
-            height: 35px; 
+            height: 35px;
         }
 
         .welcome-section {
             padding: 10px;
-            font-family: 'Charmonman';
             color: black;
             display: flex;
-            flex-direction: row; 
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            height: 100vh;
         }
 
         h1 {
-            font-family: 'Charmonman';
-    
-            color: black;
+            font-family: 'Arial';
+            font-size: 3em;
+            margin: 0;
         }
 
-        .disclaimer-section {
-            background-color: white;
-            color: black;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px;
+        h2 {
+            font-size: 1.5em;
+            margin: 0;
         }
 
-        .agree-button {
-            background-color: black;
-            color: white;
-            padding: 10px 20px;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px;
-            margin-top: 10px;
-        }
-
-        .header {
-            text-align: left; 
-            background-color: #6082B6;
-            padding: 2px 0;
+        .dog-cat-images {
             display: flex;
-            justify-content: left; 
+            justify-content: center;
             align-items: center;
-            position: relative; 
-        }
-
-        .small-dog {
-            position: absolute;
-            top: 50%; 
-            left: 50%; 
-            transform: translate(-50%, -50%); 
-            width: 30px; 
-            height: auto;
+            padding: 20px;
         }
 
         .fade-image {
             opacity: 1;
-            transition: opacity 10s ease-out;
+            transition: opacity 2s ease-out;
             max-width: 30%;
         }
 
@@ -93,54 +63,53 @@
             opacity: 0;
         }
         .top{
-            padding-top: 0pt;
-            font-size:3vw;
-            font-family: 'Charmonman';
+            font-family: 'Times New Roman', Times, serif;
         }
-
-        @media (min-width: 768px) {
+        .bottom{
+            font-family: 'Times New Roman', Times, serif;
+        }
+        @media (max-width: 768px) {
             
-            .welcome-section {
-                flex-direction: row; 
-            }
-
-            .fade-image {
-                width: 30%;
-            }
+        .logo {
+            margin: 0;
+            padding: 0;
+            height: 55px;
         }
+        .top{
+           
+            font-size: 30px;
+        }
+        .bottom{
+           font-size: 20px;
+        }
+        .welcome-section {
+            padding: 0px;
+            align-items:center;
+            height: 100vh;
+        }
+}
     </style>
 </head>
-
 <body>
-    <div class="header">
-        <img src="{% static '/images/logo.png' %}" alt="Logo" class="logo">
-        <img src="{% static 'images/dog.png' %}" alt="Small Dog" class="small-dog">
-        <h1>FurScan</h1>
-    </div>
-    <div class="top">
-        <p>Welcome to Furscan</p>
-    </div>
     <div class="welcome-section">
-        <img src="{% static 'images/catdog.png' %}" alt="CatDog" class="fade-image" id="catDogImage">
-
-        <p>Detect diseases faster and know how to help your pets</p>
-        <img src="{% static 'images/dogcat.png' %}" alt="DogCat" class="fade-image" id="dogCatImage">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo" id="logo">
+        <div class="dog-cat-images">
+            <img src="{% static 'images/catdog.png' %}" alt="CatDog" class="fade-image" id="catDogImage">
+            <img src="{% static 'images/dogcat.png' %}" alt="DogCat" class="fade-image" id="dogCatImage">
+        </div>
+        <h1 class="top" >Welcome to Furscan</h1>
+        <h2 class="bottom" >Detect diseases quicker</h2>
     </div>
-
-    <div class="disclaimer-section">
-        <p>This application is not a licensed doctor, and users should use it at their own risk. For a full diagnosis,
-            consult a licensed doctor. We are not liable for any mistakes that may happen as a result of this
-            application. Artificial intelligence used in this application is for educational aid only.</p>
-        <button class="agree-button" onclick="location.href='{% url 'animals' %}'">OK, I agree</button>
-    </div>
-
     <script>
-        
         setTimeout(function () {
             document.getElementById('catDogImage').classList.add('fade-out');
             document.getElementById('dogCatImage').classList.add('fade-out');
-        }, 10000);
+            document.getElementById('logo').classList.add('fade-out');
+        
+            setTimeout(function() {
+                window.location.href = "{% url 'disclaimer' %}";
+            }, 2000);
+        }, 2000);
     </script>
 </body>
-
 </html>

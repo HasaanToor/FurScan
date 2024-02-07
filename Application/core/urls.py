@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path
-from .views import index, animals, cat_conjunct, Cats,Dogs,Kennel
+from .views import index, animals, cat_conjunct, Cats,Dogs,Kennel,disclaimer,learnmore
 
 urlpatterns = [
     path("", index, name="index"),
@@ -27,6 +27,8 @@ urlpatterns = [
     path('Cats/', Cats, name='Cats'),
     path('Dogs/Kennel/', Kennel, name='Kennel'),
     path('Dogs/', Dogs, name='Dogs'),
+    path('disclaimer/', disclaimer, name='disclaimer'),
+    path('learnmore/', learnmore, name='learnmore'),
     path('admin/', admin.site.urls),
 ]
 

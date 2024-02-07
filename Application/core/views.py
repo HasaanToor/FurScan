@@ -84,3 +84,7 @@ def Dogs(request):
     return render(request, 'Dogs.html')
 def Kennel(request):
     return render(request, 'Kennel.html')
+def disclaimer(request):
+    return render(request, 'disclaimer.html')
+def learnmore(request):
+    return render(request, 'learnmore.html')

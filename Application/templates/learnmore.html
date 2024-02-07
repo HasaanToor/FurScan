@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About FurScan Only</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5; /* Light gray background */
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .header {
+            background-color: #6082B6; /* Header background color */
+            padding: 15px 0;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 22px;
+            color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+        }
+
+        .main-content {
+            padding: 20px; 
+            font-size: large;
+        }
+
+        .footer {
+            background-color: #6082B6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 1px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2); 
+            z-index: 1000;
+        }
+
+        .footer-icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .footer-text {
+        color: white;
+        font-size: 12px;
+        max-width: 62px; 
+        white-space: nowrap;
+        
+    }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <p>About FurScan Only</p>
+    </div>
+    <div class="main-content">
+        <p>FurScan Only is a pet health diagnostic tool designed to help and assist pet owners in an immediate fashion. It provides quick testing for common conditions in dogs, including conjunctivitis, ear infections, bloating, and kennel cough. FurScan Only aims to empower pet owners with valuable information about their pet's health.</p>
+        <p>For more detailed information on pet health, users are encouraged to refer to reputable sources such as:</p>
+        <ul>
+            <li><a href="https://veterinarypartner.vin.com/default.aspx?pid=19239">Veterinary Partner</a></li>
+            <li><a href="https://capcvet.org/">CAPC (Companion Animal Parasite Council)</a></li>
+            <li><a href="https://www.avma.org/">AVMA (American Veterinary Medical Association)</a></li>
+            <li><a href="https://www.webmd.com/pets/default.htm">WebMD Pet Health Community</a></li>
+        </ul>
+    </div>
+    <div class="footer">
+        <div>
+            <img src="{% static '/images/home.png' %}" alt="Home" class="footer-icon" onclick="location.href='{% url 'animals' %}'">
+            <p class="footer-text">Pick a pet</p>
+        </div>
+        <div>
+            <img src="{% static '/images/account.png' %}" alt="Account" class="footer-icon">
+            <p class="footer-text">Account</p>
+        </div>
+        <div>
+            <img src="{% static '/images/resources.png' %}" alt="Resources" class="footer-icon"onclick="location.href='{% url 'learnmore' %}'">
+            <p class="footer-text">Learn more</p>
+        </div>
+    </div>
+</body>
+
+</html>

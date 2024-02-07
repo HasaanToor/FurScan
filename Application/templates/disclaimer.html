@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furscan</title>
+    <style>
+        @font-face {
+            font-family: 'Charmonman';
+            src: url('{% static 'fonts/Charmonman-Bold.woff' %}') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .logo {
+            margin: 0;
+            padding: 0;
+            height: 35px; 
+        }
+
+        .welcome-section {
+            padding: 10px;
+            font-family: 'Arial';
+            color: black;
+            display: flex;
+            flex-direction: row; 
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Arial';
+    
+            color: black;
+        }
+
+        .disclaimer-section {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+            border-radius: 15px;
+            margin: 20px;
+            
+        }
+
+        .agree-button {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+.header {
+    text-align: left;
+    background-color: #6082B6;
+    padding: 2px 0;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-radius: 0 0 10px 10px; 
+    position: relative;
+}
+
+        .small-dog {
+            position: absolute;
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            width: 30px; 
+            height: auto;
+        }
+
+        .fade-image {
+            opacity: 1;
+            transition: opacity 10s ease-out;
+            max-width: 30%;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+        .top{
+            padding-top: 20%;
+        }
+
+        @media (min-width: 768px) {
+            
+            .welcome-section {
+                flex-direction: row; 
+            }
+
+            .fade-image {
+                width: 30%;
+            }
+            .top{
+            padding-top: 10%;
+        }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="{% static '/images/logo.png' %}" alt="Logo" class="logo" onclick="location.href='{% url 'index' %}'">
+        <img src="{% static 'images/dog.png' %}" alt="Small Dog" class="small-dog">
+        <h1>FurScan</h1>
+    </div>
+
+<div class="top"> </div>
+    <div class="disclaimer-section">
+        <p>This application is not a licensed doctor, and users should use it at their own risk. For a full diagnosis,
+            consult a licensed doctor. We are not liable for any mistakes that may happen as a result of this
+            application. Artificial intelligence used in this application is for educational aid only.</p>
+        <button class="agree-button" onclick="location.href='{% url 'animals' %}'">OK, I agree</button>
+    </div>
+
+
+</body>
+
+</html>
