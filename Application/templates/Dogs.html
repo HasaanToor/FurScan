@@ -82,7 +82,15 @@
             border-radius: 10px;
             margin-top: 10px;
         }
-
+        .pick-part {
+            background-color: #35383b;
+            color: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            margin: 30px;
+            font-size: large;
+            font-family: 'Times New Roman', Times, serif;
+        }
         @media (min-width: 768px) {
             .animals {
                 flex-direction: row;
@@ -103,17 +111,20 @@
 </head>
 
 <body>
-    <p style="font-size: 22px; 
-        font-family: 'Times New Roman';">Pick the part of your pet you would like to diagnose.</p>
+    <p style="padding-top: 3%;"></p>
+    <p class="pick-part">Pick the part of your dog you would like to diagnose.</p>
     <div class="animals">       
        <div class="dog animal-box" onclick="location.href='Kennel'">
             Throat(Cough)
         </div>
-        <div class="dog animal-box" onclick="location.href='#'">
-            Ear 
+        <div class="dog animal-box" onclick="location.href='{% url 'CatConjunctForm' %}'">
+            Eyes 
         </div>
         <div class="dog animal-box" onclick="location.href='#'">
-            Eyes 
+            Stomach (Bloating)
+        </div>
+        <div class="dog animal-box" onclick="location.href='#'">
+            Ears
         </div>
     </div>
     <div class="footer">

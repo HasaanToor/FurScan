@@ -35,12 +35,11 @@
             cursor: pointer;
         }
         .footer-text {
-        color: white;
-        font-size: 12px;
-        max-width: 62px; 
-        white-space: nowrap;
-        
-    }
+            color: white;
+            font-size: 12px;
+            max-width: 62px; 
+            white-space: nowrap;
+        }
         .animals {
             display: flex;
             flex-direction: column;
@@ -84,6 +83,16 @@
             margin-top: 10px;
         }
 
+        .pick-part {
+            background-color: #35383b;
+            color: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            margin: 30px;
+            font-size: large;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
         @media (min-width: 768px) {
             .animals {
                 flex-direction: row;
@@ -93,29 +102,31 @@
                 padding-top: 3%;
             }
 
+
             .animal-box {
                 margin: 20px;
             }
-    .footer-text {
-        max-width: 100px; 
-    }
+            .footer-text {
+                max-width: 100px; 
+            }
         }
     </style>
 </head>
 
 <body>
-    <p style="font-size: 22px; 
-        font-family: 'Times New Roman'; padding-top: 20px;">Pick the part of your pet you would like to diagnose.</p>
-    <div class="animals">       
-       <div class="dog animal-box" onclick="location.href='cat_conjunct'">
-            Throat (Cough)
-        </div>
-        <div class="dog animal-box" onclick="location.href='#'">
-            Ear 
-        </div>
-        <div class="dog animal-box" onclick="location.href='#'">
+    <p style="padding-top: 3%;"></p>
+    <p class="pick-part">Pick the part of your cat you would like to diagnose.</p>
+    <div class="animals"> 
+        <div class="dog animal-box" onclick="location.href='{% url 'cateyes' %}'">
             Eyes
         </div>
+        <div class="dog animal-box" onclick="location.href='#'">
+            Ears 
+        </div>      
+       <div class="dog animal-box" onclick="location.href='#'">
+            Throat (Cough)
+        </div>
+
     </div>
     <div class="footer">
         <div>

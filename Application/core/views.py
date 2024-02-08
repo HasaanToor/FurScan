@@ -13,7 +13,7 @@ class CustomFileSystemStorage(FileSystemStorage):
         self.delete(name)
         return name
 
-def index(request):
+def cat_conjunct(request):
     message = ""
     prediction = ""
     result_text = ""
@@ -69,14 +69,16 @@ def index(request):
     except MultiValueDictKeyError:
         return TemplateResponse(
             request,
-            "index.html",
+            "CatConjuct.html",
             {"message": "No image selected"},
         )
 def animals(request):
     return render(request, 'animals.html')
 
-def cat_conjunct(request):
-    return render(request, 'CatConjuct.html')
+def index(request):
+    return render(request, 'index.html')
+def CatConjunctForm(request):
+    return render(request, 'CatConjunctForm.html')
 def Cats(request):
     return render(request, 'Cats.html')
 
@@ -88,3 +90,5 @@ def disclaimer(request):
     return render(request, 'disclaimer.html')
 def learnmore(request):
     return render(request, 'learnmore.html')
+def cateyes(request):
+    return render(request, 'CatEyes.html')
