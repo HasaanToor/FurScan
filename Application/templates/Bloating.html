@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloating</title>
+    <style>
+        .footer {
+            background-color: #6082B6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 1px;
+            position:fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure the footer is above other content */
+        }
+
+        .footer-icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+    .footer-text {
+        color: white;
+        font-size: 12px;
+        max-width: 62px; 
+        white-space: nowrap;
+        
+    }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .header {
+            background-color: #35383b;
+            color: white;
+            padding: 10px 10px;
+            border-radius: 10px;
+            margin: 10px;
+            font-size: large;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .logo {
+            margin: 0;
+            padding: 0;
+            height: 35px;
+        }
+        @media (min-width: 768px) {
+            .footer-text {
+        max-width: 100px; 
+    }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <p>Please complete the form to assess the risk levels of bloating for your dog.</p>
+    </div>
+    <div data-tf-widget="MWI3esWG" data-tf-opacity="100" data-tf-iframe-props="title=Dog's Bloating"
+     data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:500px;"></div>
+    <script src="//embed.typeform.com/next/embed.js"></script>
+    <div style="align-items: center, font-family:times;">
+        All information gotten from <a href="https://veterinarypartner.vin.com/default.aspx?pid=19239&id=4951478">Veterinary Partner</a> Look there for more information
+    </div>
+    <div class="footer">
+        <div>
+            <img src="{% static '/images/home.png' %}" alt="Home" class="footer-icon" onclick="location.href='{% url 'animals' %}'">
+            <p class="footer-text">Pick a pet</p>
+        </div>
+        <div>
+            <img src="{% static '/images/account.png' %}" alt="Account" class="footer-icon">
+            <p class="footer-text">Account</p>
+        </div>
+        <div>
+            <img src="{% static '/images/resources.png' %}" alt="Resources" class="footer-icon">
+            <p class="footer-text">Learn more</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -92,3 +92,5 @@ def learnmore(request):
     return render(request, 'learnmore.html')
 def cateyes(request):
     return render(request, 'CatEyes.html')
+def bloating(request):
+    return render(request, 'Bloating.html')

@@ -18,13 +18,14 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path
-from .views import index, animals, cat_conjunct, Cats,Dogs,Kennel,disclaimer,learnmore,cateyes,CatConjunctForm
+from .views import index, animals, cat_conjunct, Cats,Dogs,Kennel,disclaimer,learnmore,cateyes,CatConjunctForm,bloating
 
 urlpatterns = [
     path("", index, name="index"),
     path('animals/', animals, name='animals'),
     path('Cats/', Cats, name='Cats'),
     path('Dogs/Kennel/', Kennel, name='Kennel'),
+    path('Dogs/Bloating/', bloating, name='bloating'),
     path('Dogs/', Dogs, name='Dogs'),
     path('disclaimer/', disclaimer, name='disclaimer'),
     path('learnmore/', learnmore, name='learnmore'),
