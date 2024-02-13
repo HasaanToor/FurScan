@@ -19,3 +19,4 @@ Our innovation strives to bridge this gap by using artificial intelligence and c
 ## Vlogs
 * [Vlog 1](https://www.youtube.com/watch?v=oTGdbxi8asQ)
 * [Vlog 2](https://www.youtube.com/watch?v=A2CbUuWAKgw)
+* [Vlog 3](https://www.youtube.com/watch?v=9Z44IviPvpc)
