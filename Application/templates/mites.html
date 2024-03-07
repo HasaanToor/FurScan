@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurScan</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Charmonman';
+            src: url('{% static 'fonts/Charmonman-Bold.woff' %}') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #6082B6;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            width: 100vw;
+        }
+        .top {
+            background-color: #35383b;
+            color: white;
+            padding: 10px 10px;
+            border-radius: 10px;
+            margin: 10px;
+            font-size: large;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+
+
+        .logo {
+            width: 50px;
+            height: auto;
+            align-self: left;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        .custom-file-upload,
+        .compress_image {
+            margin: 20px auto;
+        }
+
+        .status {
+            text-align: center;
+        }
+
+            .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 40px;
+        border-radius: 15px;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 100px; /* Adjusted margin-bottom to create space for the footer */
+    }
+
+
+        .wrapper img {
+            max-height: 557px; /* Restrict the height of images */
+            border-radius: 10px; /* Add border radius to the image */
+        }
+
+        .info_container {
+            margin-top: 20px;
+        }
+
+        .footer {
+            background-color: #6082B6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 1px;
+            width: 100%;
+            box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            position: fixed;
+            height:9.3%;
+            bottom: 0;
+        }
+
+        .footer-icon {
+            max-width: 60px ;
+            height: 40px;
+            cursor: pointer;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 0;
+        }
+
+        .footer-text {
+            color: white;
+            font-size: 12px;
+            max-width: 62px;
+            padding-bottom: 0;
+            white-space: nowrap;
+        }
+          @media (min-width: 768px) {
+      .wrapper {
+          max-height: none; 
+          margin-bottom: 50px; 
+      }
+  }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+
+    <p class="top">
+        Diagnose mites by uploading images, powered by Artificial Intelligence
+    </p>
+    <form method="POST" enctype="multipart/form-data" class="text-center" action="{% url 'mites' %}">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <input
+                        type="file"
+                        accept="image"
+                        name="image"
+                        id="file"
+                        class="form-control custom-file-upload"
+                />
+            </div>
+            <div class="col-md-6">
+                <button
+                        class="btn btn-primary compress_image"
+                        type="submit"
+                        id="submitBtn"
+                >
+                    Predict
+                </button>
+            </div>
+        </div>
+        <div class="status">
+            <p id="message">{{ message }}</p>
+        </div>
+    </form>
+
+    <div class="wrapper">
+        <img
+                src="{% if image_url %}{{ image_url }}{% else %}{% static 'images/default.png' %}{% endif %}"
+                alt="Compressed Image"
+                class="img-fluid"
+        />
+
+        <div class="info_container">
+            <ul class="list-unstyled">
+                <li>Prediction: <span class="type">{{ prediction }}</span></li>
+                <li>Accuracy: <span class="type">{{ accuracy }}</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<div class="footer">
+    <div>
+        <img src="{% static '/images/home.png' %}" alt="Home" class="footer-icon" onclick="location.href='{% url 'animals' %}'">
+        <p class="footer-text">Pick a pet</p>
+    </div>
+    <div>
+        <img src="{% static '/images/account.png' %}" alt="Account" class="footer-icon">
+        <p class="footer-text">Account</p>
+    </div>
+    <div>
+        <img src="{% static '/images/resources.png' %}" alt="Resources" class="footer-icon"onclick="location.href='{% url 'learnmore' %}'">
+        <p class="footer-text">Learn more</p>
+    </div>
+</body>
+</html>
