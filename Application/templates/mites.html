@@ -157,7 +157,7 @@
 
     <div class="wrapper">
         <img
-                src="{% if image_url %}{{ image_url }}{% else %}{% static 'images/default.png' %}{% endif %}"
+                src="{% if image_url %}{{ image_url }}{% else %}{% static 'images/default1.png' %}{% endif %}"
                 alt="Compressed Image"
                 class="img-fluid"
         />
@@ -165,7 +165,7 @@
         <div class="info_container">
             <ul class="list-unstyled">
                 <li>Prediction: <span class="type">{{ prediction }}</span></li>
-                <li>Accuracy: <span class="type">{{ accuracy }}</span></li>
+                <li>Our Confidence: <span class="type">{{ accuracy }}</span></li>
             </ul>
         </div>
     </div>

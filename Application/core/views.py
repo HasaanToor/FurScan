@@ -52,7 +52,7 @@ def cat_conjunct(request):
             if probability >= threshold:
                 print(f"Image {i + 1}: The eye is infected with a probability of {probability:.2f}.")
             else:
-                print(f"Image {i + 1}: The eye is not infected with a probability of {1 - probability:.2f}.")
+                print(f"Image {i + 1}: The eye is not infected with a probability of { probability:.2f}.")
 
         accuracy = predictions[0][0]
         result_text = "The eye is infected." if accuracy >= threshold else "The eye is not infected."
@@ -127,7 +127,7 @@ def mites(request):
             if probability >= threshold:
                 print(f"Image {i+1}: The ear is infected with a probability of {probability:.2f}.")
             else:
-                print(f"Image {i+1}: The ear is not infected with a probability of {1 - probability:.2f}.")
+                print(f"Image {i+1}: The ear is not infected with a probability of { probability:.2f}.")
 
         accuracy = predictions[0][0]
         result_text = "The ear is infected." if accuracy >= threshold else "The ear is not infected."
