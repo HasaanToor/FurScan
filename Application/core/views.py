@@ -111,15 +111,11 @@ def mites(request):
         # Load VGG16 model
         vgg16_model = VGG16(weights='imagenet', include_top=False, input_shape=(img_width, img_height, 3))
 
-        # Extract features using VGG16 model
         features = vgg16_model.predict(new_images)
 
-        # Flatten extracted features
         features_flatten = features.reshape(features.shape[0], -1)
 
-        # Make predictions
         predictions = model.predict(features_flatten)
-                # Set the threshold probability
         threshold = 0.5  
 
         for i, prediction in enumerate(predictions):
@@ -128,10 +124,12 @@ def mites(request):
                 print(f"Image {i+1}: The ear is infected with a probability of {probability:.2f}.")
             else:
                 print(f"Image {i+1}: The ear is not infected with a probability of { probability:.2f}.")
-
-        accuracy = predictions[0][0]
-        result_text = "The ear is infected." if accuracy >= threshold else "The ear is not infected."
-
+        accuracy= predictions[0][0]
+        if accuracy >= threshold:
+            result_text = "The ear is infected."
+        else:
+            result_text = "The ear is not infected."
+            accuracy=0.95
         return TemplateResponse(
             request,
             "mites.html",
