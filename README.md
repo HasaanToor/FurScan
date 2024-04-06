@@ -44,3 +44,4 @@ python manage.py runserver
 
 ## Demo and Commercial
 * [Application Demo. How to use our app!](https://www.youtube.com/watch?v=FRidz-tvH48)
+* [Commercial Video](https://www.youtube.com/watch?v=q5QgG3sSOmM)
