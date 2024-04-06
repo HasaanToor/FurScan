@@ -22,4 +22,4 @@ Our innovation strives to bridge this gap by using artificial intelligence and c
 * [Vlog 3](https://www.youtube.com/watch?v=9Z44IviPvpc)
 
 ## Miscellaneous Links
-* [Application Demo](https://www.youtube.com/watch?v=FRidz-tvH48)
+* [Application Demo. How to use our app!](https://www.youtube.com/watch?v=FRidz-tvH48)
