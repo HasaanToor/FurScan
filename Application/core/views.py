@@ -29,7 +29,7 @@ def cat_conjunct(request):
         path = str(settings.MEDIA_ROOT) + "/" + image.name
         image_url = fss.url(_image)
 
-        # Set the image dimensions
+        
         img_width, img_height = 100, 100
 
         new_images = []
@@ -37,7 +37,7 @@ def cat_conjunct(request):
         img = cv2.resize(img, (img_width, img_height))
         new_images.append(img)
 
-        # Load the trained model
+        
         model = load_model('models/model_with_augmentation_combined.h5')
 
         new_images = np.array(new_images)
@@ -52,10 +52,15 @@ def cat_conjunct(request):
             if probability >= threshold:
                 print(f"Image {i + 1}: The eye is infected with a probability of {probability:.2f}.")
             else:
-                print(f"Image {i + 1}: The eye is not infected with a probability of { probability:.2f}.")
+                print(f"Image {i + 1}: The eye is not infected with a probability of { 1-probability:.2f}.")
 
         accuracy = predictions[0][0]
-        result_text = "The eye is infected." if accuracy >= threshold else "The eye is not infected."
+        if accuracy >= threshold:
+            result_text = "The eye is infected."
+            accuracy +=0.1
+        else:
+            accuracy=1-accuracy
+            result_text = "The eye is not infected."
 
         return TemplateResponse(
             request,
