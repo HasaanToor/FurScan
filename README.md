@@ -1,5 +1,7 @@
 # FurScan
 
+![poster](./Documentation/Poster.png)
+
 ## Members
 * Hasaan Toor
 * Aryan Chandra
