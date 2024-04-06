@@ -16,6 +16,25 @@ At the core of our capstone project lies a profound "why" - a mission to enhance
 
 Our innovation strives to bridge this gap by using artificial intelligence and computer vision. By analyzing photos of animals, our app can quickly and accurately identify health problems, from common ailments like pink eye to more subtle issues that might escape the human eye. This technology not only gives pet owners critical information but also serves as a preventative measure, enabling early intervention when necessary. Ultimately, our project seeks to strengthen the human-animal bond and ensure the best possible care for our furry companions.
 
+## Installation Instructions
+1. Install Django:
+```
+pip install Django
+```
+2. Clone repository:
+```
+git clone https://github.com/HasaanToor/FurScan
+```
+3. Navigate to the project directory:
+```
+cd Application
+```
+4. Run the Django development server
+```
+python manage.py runserver
+```
+6. Open [http://127.0.0.1:8000/ to view the project.](http://127.0.0.1:8000/ to view the project.
+ 
 ## Vlogs
 * [Vlog 1](https://www.youtube.com/watch?v=oTGdbxi8asQ)
 * [Vlog 2](https://www.youtube.com/watch?v=A2CbUuWAKgw)
