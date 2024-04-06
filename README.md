@@ -40,5 +40,5 @@ python manage.py runserver
 * [Vlog 2](https://www.youtube.com/watch?v=A2CbUuWAKgw)
 * [Vlog 3](https://www.youtube.com/watch?v=9Z44IviPvpc)
 
-## Miscellaneous Links
+## Demo and Commercial
 * [Application Demo. How to use our app!](https://www.youtube.com/watch?v=FRidz-tvH48)
