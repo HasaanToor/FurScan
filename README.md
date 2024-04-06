@@ -33,7 +33,7 @@ cd Application
 ```
 python manage.py runserver
 ```
-6. Open [http://127.0.0.1:8000/ to view the project.](http://127.0.0.1:8000/ to view the project.
+6. Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to view the project.
  
 ## Vlogs
 * [Vlog 1](https://www.youtube.com/watch?v=oTGdbxi8asQ)
